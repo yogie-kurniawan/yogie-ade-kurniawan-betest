@@ -1,0 +1,11 @@
+# get http://localhost:5000/api/v1/users/user/672e3036d658b484fecf438b
+
+POST http://localhost:5000/api/v1/users/create
+Content-Type: application/json
+
+{
+    "userName": "john",
+    "accountNumber": "123",
+    "identityNumber": "123",
+    "emailAddress": "john@gmail.com"
+}
