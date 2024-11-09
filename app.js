@@ -19,6 +19,7 @@ const corsOptions = {
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
   allowedHeaders: ["X-Requested-With", "Content-Type", "Authorization"],
 };
+
 app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json({ limit: "10mb" }));

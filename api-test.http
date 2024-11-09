@@ -1,11 +1,51 @@
-# get http://localhost:5000/api/v1/users/user/672e3036d658b484fecf438b
 
-POST http://localhost:5000/api/v1/users/create
-Content-Type: application/json
+# get http://localhost:5000/api/v1/users
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MmY1NDY3OWI1MzJhZTJjZjg2OTkwMiIsInVzZXJuYW1lIjoiam9obiIsImlhdCI6MTczMTE1NTUzNSwiZXhwIjoxNzMzNzQ3NTM1fQ.4_8_mZDcMtz1mibFpbesvBoXohcgU6RNR29HjylZ8sI
 
-{
-    "userName": "john",
-    "accountNumber": "123",
-    "identityNumber": "123",
-    "emailAddress": "john@gmail.com"
-}
+# get http://localhost:5000/api/v1/users/user/672f54679b532ae2cf869902
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MmY1NDY3OWI1MzJhZTJjZjg2OTkwMiIsInVzZXJuYW1lIjoiam9obiIsImlhdCI6MTczMTE1NTUzNSwiZXhwIjoxNzMzNzQ3NTM1fQ.4_8_mZDcMtz1mibFpbesvBoXohcgU6RNR29HjylZ8sI
+
+# get http://localhost:5000/api/v1/users/account/123
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MmY1NDY3OWI1MzJhZTJjZjg2OTkwMiIsInVzZXJuYW1lIjoiam9obiIsImlhdCI6MTczMTE1NTUzNSwiZXhwIjoxNzMzNzQ3NTM1fQ.4_8_mZDcMtz1mibFpbesvBoXohcgU6RNR29HjylZ8sI
+
+
+# get http://localhost:5000/api/v1/users/identity/123
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MmY1NDY3OWI1MzJhZTJjZjg2OTkwMiIsInVzZXJuYW1lIjoiam9obiIsImlhdCI6MTczMTE1NTUzNSwiZXhwIjoxNzMzNzQ3NTM1fQ.4_8_mZDcMtz1mibFpbesvBoXohcgU6RNR29HjylZ8sI
+
+# POST http://localhost:5000/api/v1/users/login
+# Content-Type: application/json
+
+# {
+#     "userName": "john",
+#     "accountNumber": "123"
+# }
+
+# POST http://localhost:5000/api/v1/users/create
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MmY1NDY3OWI1MzJhZTJjZjg2OTkwMiIsInVzZXJuYW1lIjoiam9obiIsImlhdCI6MTczMTE1NTUzNSwiZXhwIjoxNzMzNzQ3NTM1fQ.4_8_mZDcMtz1mibFpbesvBoXohcgU6RNR29HjylZ8sI
+
+# {
+#     "userName": "toni",
+#     "accountNumber": "12334",
+#     "identityNumber": "1423",
+#     "emailAddress": "toni@gmail.com"
+# }
+
+# PATCH http://localhost:5000/api/v1/users/672f54679b532ae2cf869902/update
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MmY1NDY3OWI1MzJhZTJjZjg2OTkwMiIsInVzZXJuYW1lIjoiam9obiIsImlhdCI6MTczMTE1NTUzNSwiZXhwIjoxNzMzNzQ3NTM1fQ.4_8_mZDcMtz1mibFpbesvBoXohcgU6RNR29HjylZ8sI
+
+# {
+#     "userName": "ron",
+#     "accountNumber": "123s34ey",
+#     "identityNumber": "1se423",
+#     "emailAddress": "ron@gmail.com"
+# }
+
+# DELETE http://localhost:5000/api/v1/users/672f582aa16b4c8fcfa32f04/delete
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MmY1NDY3OWI1MzJhZTJjZjg2OTkwMiIsInVzZXJuYW1lIjoiam9obiIsImlhdCI6MTczMTE1NTUzNSwiZXhwIjoxNzMzNzQ3NTM1fQ.4_8_mZDcMtz1mibFpbesvBoXohcgU6RNR29HjylZ8sI

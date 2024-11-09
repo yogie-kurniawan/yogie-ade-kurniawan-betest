@@ -1,4 +1,5 @@
 import CustomError from "./custom-error.js";
 import NotFoundError from "./not-found.js";
 import BadRequestError from "./bad-request.js";
-export { CustomError, NotFoundError, BadRequestError };
+import ConflictError from "./conflict-error.js";
+export { CustomError, NotFoundError, BadRequestError, ConflictError };

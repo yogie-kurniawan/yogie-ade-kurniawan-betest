@@ -1,6 +1,10 @@
 import User from "../models/User.js";
 import mongoose from "mongoose";
-import { NotFoundError, BadRequestError } from "../errors/index.js";
+import {
+  NotFoundError,
+  BadRequestError,
+  ConflictError,
+} from "../errors/index.js";
 import { generateToken } from "../utils/token.js";
 import { StatusCodes } from "http-status-codes";
 
@@ -57,11 +61,14 @@ export const getUserById = async (req, res, next) => {
 
 export const getUserByAccountNumber = async (req, res, next) => {
   const { accountNumber } = req.params;
-  if (!accountNumber) next(new BadRequestError("Account Number is required!"));
+  if (!accountNumber)
+    return next(new BadRequestError("Account Number is required!"));
   try {
     const user = await User.findOne({ accountNumber });
     if (!user)
-      return new BadRequestError("User not found with this account number!");
+      return next(
+        new BadRequestError("User not found with this account number!")
+      );
     return res.status(StatusCodes.OK).json({
       success: true,
       message: "Fetching user succeeded!",
@@ -74,11 +81,14 @@ export const getUserByAccountNumber = async (req, res, next) => {
 
 export const getUserByIdentityNumber = async (req, res, next) => {
   const { identityNumber } = req.params;
-  if (!identityNumber) next(new BadRequestError("Account Number is required!"));
+  if (!identityNumber)
+    return next(new BadRequestError("Identity Number is required!"));
   try {
     const user = await User.findOne({ identityNumber });
     if (!user)
-      next(new BadRequestError("User not found with this account number!"));
+      return next(
+        new BadRequestError("User not found with this identity number!")
+      );
     return res.status(StatusCodes.OK).json({
       success: true,
       message: "Fetching user succeeded!",
@@ -92,8 +102,10 @@ export const getUserByIdentityNumber = async (req, res, next) => {
 export const createUser = async (req, res, next) => {
   const { userName, accountNumber, emailAddress, identityNumber } = req.body;
   if (!userName || !accountNumber || !emailAddress || !identityNumber)
-    throw new BadRequestError(
-      "Username, Account Number, Email Address, and Identity Number are required"
+    return next(
+      BadRequestError(
+        "Username, Account Number, Email Address, and Identity Number are required"
+      )
     );
 
   try {
@@ -112,11 +124,11 @@ export const createUser = async (req, res, next) => {
   } catch (error) {
     if (error.code === 11000) {
       const duplicateField = Object.keys(error.keyValue).join(", ");
-
-      return res.status(StatusCodes.CONFLICT).json({
-        success: false,
-        message: `Duplicate entry detected for field(s): ${duplicateField}`,
-      });
+      return next(
+        new ConflictError(
+          `Duplicate entry detected for field(s): ${duplicateField}`
+        )
+      );
     }
     next(error);
   }
@@ -130,7 +142,9 @@ export const updateUser = async (req, res, next) => {
   const { userName, accountNumber, emailAddress, identityNumber } = req.body;
   if (!userName || !accountNumber || !emailAddress || !identityNumber)
     return next(
-      "Username, Account Number, Email Address, and Identity Number are required"
+      new BadRequestError(
+        "Username, Account Number, Email Address, and Identity Number are required"
+      )
     );
 
   try {
@@ -154,11 +168,11 @@ export const updateUser = async (req, res, next) => {
   } catch (error) {
     console.log(error);
     if (error.code === 11000) {
-      return res.status(StatusCodes.CONFLICT).json({
-        success: false,
-        message:
-          "Duplicate entry detected: a user with the same account number or email already exists.",
-      });
+      return next(
+        new ConflictError(
+          "Duplicate entry detected: a user with the same account number or email already exists."
+        )
+      );
     }
     next(error);
   }

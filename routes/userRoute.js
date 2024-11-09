@@ -13,13 +13,13 @@ import { checkAuth } from "../middleware/auth.js";
 
 const route = Router();
 
-route.get("/login", authenticateUser);
-route.get("/", getUsers);
-route.get("/user/:id", getUserById);
-route.get("/account/:accountNumber", getUserByAccountNumber);
-route.get("/identity/:identityNumber", getUserByIdentityNumber);
-route.post("/create", createUser);
-route.patch("/:id/update", updateUser);
-route.delete("/:id/delete", deleteUser);
+route.post("/login", authenticateUser);
+route.get("/", checkAuth, getUsers);
+route.get("/user/:id", checkAuth, getUserById);
+route.get("/account/:accountNumber", checkAuth, getUserByAccountNumber);
+route.get("/identity/:identityNumber", checkAuth, getUserByIdentityNumber);
+route.post("/create", checkAuth, createUser);
+route.patch("/:id/update", checkAuth, updateUser);
+route.delete("/:id/delete", checkAuth, deleteUser);
 
 export default route;
