@@ -12,7 +12,7 @@ import { userRoute } from "./routes/index.js";
 
 env.config();
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 7000;
 
 const corsOptions = {
   origin: process.env.CLIENT_URL,
