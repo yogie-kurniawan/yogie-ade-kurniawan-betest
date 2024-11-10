@@ -18,7 +18,7 @@ REGISTRATION
   "userName" : "john@gmail.com",
   "emailAddress" : "john@gmail.com",
   "accountNumber" : "09939353",
-  "identityNumner" : "123,
+  "identityNumner" : "123
   }
 
 LOGIN
@@ -27,7 +27,7 @@ LOGIN
 - Route : https://ms-yogie-ade-kurniawan-betest.vercel.app/api/v1/users/login
 - Body : {
   "userName" : "john@gmail.com",
-  "accountNumber" : "09939353",
+  "accountNumber" : "09939353"
   }
 
 GET ALL USERS
@@ -62,7 +62,7 @@ CREATE A USER
   "userName" : "john@gmail.com",
   "emailAddress" : "john@gmail.com",
   "accountNumber" : "09939353",
-  "identityNumner" : "123,
+  "identityNumner" : "123
   }
 - header : {Authorization : Bearer yourToken}
 
@@ -74,7 +74,7 @@ UPDATE A USER
   "userName" : "john@gmail.com",
   "emailAddress" : "john@gmail.com",
   "accountNumber" : "09939353",
-  "identityNumner" : "123,
+  "identityNumner" : "123
   }
 - header : {Authorization : Bearer yourToken}
 
