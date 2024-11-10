@@ -39,7 +39,7 @@ export const register = async (req, res, next) => {
     res.status(201).json({
       success: true,
       message: "Registration is successful",
-      user: { userName, accountNumber, emailAddress, identityNumber, token },
+      user: newUser,
     });
   } catch (error) {
     if (error.code === 11000) {
