@@ -2,6 +2,7 @@ import express, { urlencoded } from "express";
 import env from "dotenv";
 import connectDB from "./config/connectDB.js";
 import cors from "cors";
+import helmet from "helmet";
 
 // MIDDLEWARE VAR
 import notFound from "./middleware/not-found.js";
@@ -23,6 +24,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json({ limit: "10mb" }));
+app.use(helmet());
 
 // ROUTES
 app.get("/api/v1", (req, res) => {

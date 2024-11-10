@@ -10,12 +10,67 @@ https://ms-yogie-ade-kurniawan-betest.vercel.app/api/v1
 
 User
 
-- Register ( method : POST ) : https://ms-yogie-ade-kurniawan-betest.vercel.app/api/v1/users/register
-- Login ( method : POST ) : https://ms-yogie-ade-kurniawan-betest.vercel.app/api/v1/users/login
-- Get All Users ( method : GET ) : https://ms-yogie-ade-kurniawan-betest.vercel.app/api/v1/users
-- Get A User By ID ( method : GET ) : https://ms-yogie-ade-kurniawan-betest.vercel.app/api/v1/users/user/:id
-- Get A User By Account Number ( method : GET ) : https://ms-yogie-ade-kurniawan-betest.vercel.app/api/v1/users/account/:accountNumber
-- Get A User By Identity Number ( method : GET ) : https://ms-yogie-ade-kurniawan-betest.vercel.app/api/v1/users/identitiy/:identityNumber
-- Create A User ( method : POST ) : https://ms-yogie-ade-kurniawan-betest.vercel.app/api/v1/users/create
-- Update A user ( method : PATCH ) : https://ms-yogie-ade-kurniawan-betest.vercel.app/api/v1/users/:id/update
-- Delete A user ( method : DELETE ) : https://ms-yogie-ade-kurniawan-betest.vercel.app/api/v1/users
+Registration
+Method : POST
+Route : https://ms-yogie-ade-kurniawan-betest.vercel.app/api/v1/users/register
+Body : {
+"userName" : "john@gmail.com",
+"emailAddress" : "john@gmail.com",
+"accountNumber" : "09939353",
+"identityNumner" : "123,
+}
+
+Login
+Method : POST
+Route : https://ms-yogie-ade-kurniawan-betest.vercel.app/api/v1/users/login
+Body : {
+"userName" : "john@gmail.com",
+"accountNumber" : "09939353",
+}
+
+GET ALL USERS
+Method : GET
+Route : https://ms-yogie-ade-kurniawan-betest.vercel.app/api/v1/users
+header : {Authorization : Bearer yourToken}
+
+GET A USER BY ID
+Method : GET
+Route : https://ms-yogie-ade-kurniawan-betest.vercel.app/api/v1/users/user/:id
+header : {Authorization : Bearer yourToken}
+
+GET A USER BY ACCOUNT NUMBER
+Method : GET
+Route : https://ms-yogie-ade-kurniawan-betest.vercel.app/api/v1/users/account/:accountNumber
+header : {Authorization : Bearer yourToken}
+
+GET A USER BY IDENTITY NUMBER
+Method : GET
+Route : https://ms-yogie-ade-kurniawan-betest.vercel.app/api/v1/users/identitiy/:identityNumber
+header : {Authorization : Bearer yourToken}
+
+CREATE A USER
+Method : POST
+Route : https://ms-yogie-ade-kurniawan-betest.vercel.app/api/v1/users/create
+Body : {
+"userName" : "john@gmail.com",
+"emailAddress" : "john@gmail.com",
+"accountNumber" : "09939353",
+"identityNumner" : "123,
+}
+header : {Authorization : Bearer yourToken}
+
+UPDATE A USER
+Method : PATCH
+Route : https://ms-yogie-ade-kurniawan-betest.vercel.app/api/v1/users/:id/update
+Body : {
+"userName" : "john@gmail.com",
+"emailAddress" : "john@gmail.com",
+"accountNumber" : "09939353",
+"identityNumner" : "123,
+}
+header : {Authorization : Bearer yourToken}
+
+DELETE A USER
+Method : DELETE
+Route : https://ms-yogie-ade-kurniawan-betest.vercel.app/api/v1/users/:id/delete
+header : {Authorization : Bearer yourToken}
