@@ -1,5 +1,6 @@
 import { Router } from "express";
 import {
+  register,
   authenticateUser,
   getUsers,
   getUserById,
@@ -13,6 +14,7 @@ import { checkAuth } from "../middleware/auth.js";
 
 const route = Router();
 
+route.post("/register", register);
 route.post("/login", authenticateUser);
 route.get("/", checkAuth, getUsers);
 route.get("/user/:id", checkAuth, getUserById);

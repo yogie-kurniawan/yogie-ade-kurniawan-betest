@@ -6,7 +6,53 @@ import {
   ConflictError,
 } from "../errors/index.js";
 import { generateToken } from "../utils/token.js";
+import jwt from "jsonwebtoken";
 import { StatusCodes } from "http-status-codes";
+
+export const register = async (req, res, next) => {
+  const { userName, accountNumber, emailAddress, identityNumber } = req.body;
+  if (!userName || !accountNumber || !emailAddress || !identityNumber)
+    return next(
+      new BadRequestError(
+        "Username, Account Number, Email Address, and Identity Number are required"
+      )
+    );
+  if (userName.length < 3 || userName.length > 50)
+    return next(
+      new BadRequestError(
+        "Username must be 3 characters or more and less than 51 characters"
+      )
+    );
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(emailAddress)) {
+    return next(new BadRequestError("Invalid email format"));
+  }
+  try {
+    const newUser = new User({
+      userName,
+      accountNumber,
+      emailAddress,
+      identityNumber,
+    });
+    await newUser.save();
+    const token = generateToken(newUser);
+    res.status(201).json({
+      success: true,
+      message: "Registration is successful",
+      user: { userName, accountNumber, emailAddress, identityNumber, token },
+    });
+  } catch (error) {
+    if (error.code === 11000) {
+      const duplicateField = Object.keys(error.keyValue).join(", ");
+      return next(
+        new ConflictError(
+          `Duplicate entry detected for field(s): ${duplicateField}`
+        )
+      );
+    }
+    next(error);
+  }
+};
 
 export const authenticateUser = async (req, res, next) => {
   const { userName, accountNumber } = req.body;
@@ -107,6 +153,16 @@ export const createUser = async (req, res, next) => {
         "Username, Account Number, Email Address, and Identity Number are required"
       )
     );
+  if (userName.length < 3 || userName.length > 50)
+    return next(
+      new BadRequestError(
+        "Username must be 3 characters or more and less than 51 characters"
+      )
+    );
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(emailAddress)) {
+    return next(new BadRequestError("Invalid email format"));
+  }
 
   try {
     const newUser = new User({
