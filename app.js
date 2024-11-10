@@ -25,6 +25,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json({ limit: "10mb" }));
 
 // ROUTES
+app.get("/api/v1", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "Welcome to the API. Your request was successful.",
+  });
+});
 app.use("/api/v1/users", userRoute);
 
 // MIDDLEWARE
